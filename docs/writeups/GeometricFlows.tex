@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[]{graphicx}
+
+\renewcommand*\rmdefault{iwona}
+
+\title{Geometric Flows}
+\author{Orton Babb, Aneesh Malhotra, Ryan Vaughan}
+\date{Fall 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Constructing the Normalized Graph Laplacian on a Manifold}
+
+\section{Heat Flow}
+
+Suppose $\frac{\partial}{\partial t} \tilde{f} = - \Delta \tilde{f}$ with $\tilde{f}(0, \theta) = f_0(\theta)$. Note that if $\tilde{f}$ is an eigenfunction of $\Delta$, then $\Delta\tilde{f}=\lambda \tilde{f}$. Since $\frac{\partial}{\partial t} \tilde{f} = - \lambda \tilde{f}$, this has the solution $\tilde{f}(t, \theta) = e^{-\lambda t}f_0 (\theta)$. More generally, we want to expand $\tilde{f}$ to its generalized fourier series:
+$$ \tilde{f}(t,\theta) = \sum_{n=0}^{\infty} c_n(t)\phi_n(\theta)$$
+
+Let $\phi$, so that  $\Delta \phi_n = \lambda_n \phi_n $, be the eigenfunctions of $\Delta$. Then,
+
+\begin{align*}
+\frac{\partial}{\partial t} \tilde{f} &= \sum_{n=0}^{\infty} \dot{c}_n(t)\phi_n(\theta) &= \Delta \tilde{f} &= \sum_{n=0}^{\infty} c_n(t) \Delta \phi_n(\theta) \\
+%&= \sum_{n=0}^{\infty} c_n(t) \lambda_n \phi_n(\theta)
+\end{align*}
+
+\end{document}
