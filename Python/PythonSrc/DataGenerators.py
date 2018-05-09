@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def circle_data(Ntheta=500,Nt=100,tmax=10,shape = (1,1),plot = 0): #Creates test data for an ellipse using Ntheta uniform samples on the circle                                            #and Nt uniform samples in time
+def circle_data(Ntheta=500,Nt=100,tmax=10,shape = (1,1),plot = 0): #Creates test data for an ellipse using Ntheta uniform samples on the circle and Nt uniform samples in time
     xstretch = shape[0]
     ystretch = shape[1]
     xs = 2*np.pi*np.linspace(1/Ntheta,1,Ntheta) #Even grid from 0 to 2pi

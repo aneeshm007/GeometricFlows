@@ -1,7 +1,15 @@
 #GeometricFlows
 from libfunctions import *
 import numpy as np
+import os
+import shutil
 
+try:
+    os.mkdir("Images")
+except:
+    shutil.rmtree("Images")
+    os.mkdir("Images")
+    
 def GeometricFlow(manifold_data,T,dt,plot = 0): # Runs a Geometric flow for "T" iterations of time step dt
     data = manifold_data
     N = data.length
@@ -14,8 +22,10 @@ def GeometricFlow(manifold_data,T,dt,plot = 0): # Runs a Geometric flow for "T" 
     print(initial_area)
     for i in range(T):
         band_eps = bandwidthFinder(Data = data, p = npoints)
-        #if band_eps < 10**-5:
-        #    band_eps = 10**-5
+        if band_eps < 10**-5:
+            band_eps = 1
+
+
         #tempx = data.NonUniform_spec_solve((t[i+1]-t[i]),f0 = tempx,eps = band_eps)
         #tempy = data.NonUniform_spec_solve((t[i+1]-t[i]),f0 = tempy,eps = band_eps)
         tempx = data.NonUniform_spec_solve(dt,f0 = tempx,eps = band_eps)
@@ -28,12 +38,13 @@ def GeometricFlow(manifold_data,T,dt,plot = 0): # Runs a Geometric flow for "T" 
         tempx = tempx*(np.sqrt(area_norm))
         tempy = tempy*(np.sqrt(area_norm))
         if plot == 1:
-            plt.plot(tempx,tempy)
-            plt.savefig('p%d'%i)
+            plt.figure()
+            plt.plot(tempx,tempy, 'o')
+            plt.title("Geometric Flow: t = {:.3}".format(i*dt))
+            plt.grid(1)
+            plt.savefig('Images/p%d'%i)
         solx[:,i] = tempx
         soly[:,i] = tempy
         temp = np.concatenate((tempx.reshape((N,1)),tempy.reshape((N,1))),axis = 1)
         data.data = temp
-
-
     return solx,soly

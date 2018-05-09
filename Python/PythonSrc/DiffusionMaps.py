@@ -10,7 +10,7 @@ class mdata: # Defines class for a set of data values
     def __init__(self,Data,theta = False, phi = False): #data is numpy array of points that lie on some manifold
         self.data = Data #The data contains some data "sampled from a manifold". Simply consists of points in R^n
         self.theta = theta #This parameter is necessary to plot and only applies to a circle
-        self.phi = phi #Phi for plotting the eigenfunctions 
+        self.phi = phi #Phi for plotting the eigenfunctions
         self.identity = np.identity(self.data.shape[0]) #Identity matrix of the size of data
         self.length = len(self.data) #This the number of samples of the manifold we have
         return
@@ -19,7 +19,7 @@ class mdata: # Defines class for a set of data values
         return cdist(self.data,self.data) #cdist operates the same as pdist2 in matlab. It returns a matrix whose
                                           #(i,j) entry is the Euclidean distance between points i and j
 
-    def kernel(self,eps):
+    def kernel(self,eps):     
         graph = self.graph() # The kernel magnifies the distances in the weighted graph
         return np.exp(np.square(graph)/(-2)/eps/eps)
 
@@ -123,7 +123,7 @@ class mdata: # Defines class for a set of data values
             plt.ylabel(r"$\Delta_g \vec{f}$")
         return
     def NonUniform_spec_solve_vec(self,t,f0,eps = .003): #Will solve the heat equation for all time vectors in t, and return a matrix
-                                                     # "sol" whose ith column is the solution for t[i]. For solving heat equation
+                                                         # "sol" whose ith column is the solution for t[i]. For solving heat equation
         N = self.length
         cols = len(t)
         sol = np.empty([N,cols])

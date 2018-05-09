@@ -33,3 +33,4 @@ dt = .1
 #solx,soly = GeometricFlow(manifold_data,T,dt)
 
 GeometricFlow(Data,T,dt,plot = 1)
+
